@@ -1,6 +1,7 @@
-const express = require('express');
+const app = require('./src/app');
+const sequelize = require('./src/config/database');
 
-const app = express();
+sequelize.sync();
 
 app.get('/', (req, res) => {
   return res.send('Server is UP..');
