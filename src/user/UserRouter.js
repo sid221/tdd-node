@@ -1,16 +1,11 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
-
-const User = require('./User');
+const UserService = require('./UserService');
 
 const router = express.Router();
 
 router.post('/api/v1/users', async (req, res) => {
-  const { username, password, email } = req.body;
-
   try {
-    const hashedPassword = await bcrypt.hash(password, 8);
-    await User.create({ username, email, password: hashedPassword });
+    UserService.save(req.body);
     return res.status(200).send({ message: 'User created' });
   } catch (error) {
     console.log('error => ', error);

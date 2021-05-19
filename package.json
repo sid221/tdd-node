@@ -4,12 +4,14 @@
   "description": "Test driven development for node",
   "main": "server.js",
   "scripts": {
-    "test": "jest --watch",
-    "start": "nodemon server.js"
+    "test": "cross-env NODE_ENV=test jest --watch",
+    "start": "cross-env NODE_ENV=development node server.js",
+    "dev": "cross-env NODE_ENV=development nodemon server.js"
   },
   "author": "Sudhanshu Chaurasia",
   "license": "MIT",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -20,6 +22,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
     "express": "^4.17.1",
     "sequelize": "^6.6.2",
     "sqlite3": "^5.0.2"
